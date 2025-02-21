@@ -1,0 +1,91 @@
+<div id="mainDiv">
+    <form class="" autocomplete="off">
+        <h1 class="ms-6">Readers</h1>
+
+        <div class="row g-5 justify-content-center form-floating">
+            <label hidden name="readerId">{{currentReader.readerId}}</label>
+        </div>
+        <div class="row g-5 mt-3 justify-content-center form-floating">
+            <div class="col-4">
+                <label for="readerName" class="form-label"> Reader Name</label>
+                <input type="text" class="form-control" id="readerName" name="readerName" placeholder="Ex. Front Door"
+                    [(ngModel)]="currentReader.readerName">
+            </div>
+            <div class="col-3">
+                <label for="readerIp" class="form-label"> Reader IP</label>
+                <input type="text" class="form-control" id="readerIp" name="readerIp" placeholder="Ex. 192.168.0.34"
+                    [(ngModel)]="currentReader.readerIp">
+
+            </div>
+            <div class="col-3">
+                <label for="readerPort" class="form-label"> Reader Port</label>
+                <input type="text" class="form-control" id="readerPort" name="readerPort" placeholder="Ex. 5656"
+                    [(ngModel)]="currentReader.readerPort">
+
+            </div>
+        </div>
+        <div class="row g-5 mt-1 justify-content-center form-floating">
+            <div class="col-4">
+                <label for="readerUsername" class="form-label"> Reader Username</label>
+                <input type="text" class="form-control" id="readerUsername" name="readerUsername"
+                    placeholder="Ex. admin" [(ngModel)]="currentReader.readerUsername" autocomplete="bday-year">
+            </div>
+            <div class="col-4">
+                <label for="readerPassword" class="form-label"> Reader Password</label>
+                <input type="password" class="form-control" id="readerPassword" name="readerPassword"
+                    placeholder="Ex. MyReaderPassword" [(ngModel)]="currentReader.readerPassword" autocomplete="bday">
+
+            </div>
+        </div>
+        <div class="row g-5 mt-1 justify-content-center">
+            <div class="col-8 lb-lg">
+                <label>{{errorLabel}}</label>
+            </div>
+        </div>
+
+        <div class="row form-floating mb-3 mt-5 mx-auto" style="width:60%">
+            <div class="col-4">
+                <button type="button" class="btn btn-primary btn-lg border border-dark mt-4" style="width:200px"
+                    id="btnSaveReader" (click)="saveReader()">Save
+                    Reader</button>
+            </div>
+            <div class="col-4">
+                <button type="button" class="btn btn-primary btn-lg border border-dark mt-4" style="width:200px"
+                    id="btnCancel" (click)="cancelReader()">Cancel</button>
+            </div>
+            <div class="col-4">
+                <button type="button" class="btn btn-primary btn-lg border border-dark mt-4" style="width:200px"
+                    id="btnDelete" (click)="deleteReader()">Delete Reader</button>
+            </div>
+        </div>
+    </form>
+
+
+    <div class="tbodyDiv ml-2 mr-auto mb-3 mt-5">
+        <table class="table table-dark table-striped text-center table-hover" id="tblUsers">
+            <thead class="sticky-top">
+                <tr>
+                    <th scope="col" hidden></th>
+                    <th scope="col">Name</th>
+                    <th scope="col">IP</th>
+                    <th scope="col">Port</th>
+                    <th scope="col">UserName</th>
+                    <th scope="col" hidden></th>
+                </tr>
+            </thead>
+            <tbody id="tblUserBody">
+                <tr *ngFor="let reader of this.readers"
+                    (click)="getReader(reader.readerId, reader.readerName, reader.readerIp, reader.readerPort, reader.readerUsername, reader.readerPassword)">
+
+                    <td hidden>{{reader.readerId}}</td>
+                    <td>{{reader.readerName}}</td>
+                    <td>{{reader.readerIp}}</td>
+                    <td>{{reader.readerPort}}</td>
+                    <td>{{reader.readerUsername}}</td>
+                    <td hidden>${{reader.readerPassword}}</td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+</div>

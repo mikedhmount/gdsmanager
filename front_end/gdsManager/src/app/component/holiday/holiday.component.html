@@ -1,0 +1,72 @@
+<div id="mainDiv">
+    <form class="" autocomplete="off">
+        <h1 class="ms-6">Holidays</h1>
+
+        <div class="row g-5 justify-content-center form-floating">
+            <label hidden name="readerId">{{currentHoliday.holidayId}}</label>
+        </div>
+        <div class="row g-5 mt-3 justify-content-center form-floating">
+            <div class="col-6">
+                <label for="holidayName" class="form-label"> Holiday Name</label>
+                <input type="text" class="form-control" id="holidayName" name="holidayName" placeholder="Ex. Admin"
+                    [(ngModel)]="currentHoliday.holidayName">
+            </div>
+        </div>
+        <div class="row g-5 mt-1 justify-content-center form-floating">
+            <div class="col-3">
+                <label for="startDate">Start Date</label>
+                <input type="date" class="form-control" name="startDate" [(ngModel)]="currentHoliday.holidayStart">
+            </div>
+            <div class="col-3">
+                <label for="endDate">End Date</label>
+                <input type="date" class="form-control" name="endDate" [(ngModel)]="currentHoliday.holidayEnd">
+            </div>
+        </div>
+        <div class="row g-5 mt-1 justify-content-center">
+            <div class="col-8 lb-lg">
+                <label>{{errorLabel}}</label>
+            </div>
+        </div>
+
+        <div class="row form-floating mb-3 mt-5 mx-auto" style="width:60%">
+            <div class="col-4">
+                <button type="button" class="btn btn-primary btn-lg border border-dark mt-4" style="width:200px"
+                    id="btnSaveReader" (click)="saveHoliday()">Save
+                    holiday</button>
+            </div>
+            <div class="col-4">
+                <button type="button" class="btn btn-primary btn-lg border border-dark mt-4" style="width:200px"
+                    id="btnCancel" (click)="cancelHoliday()">Cancel</button>
+            </div>
+            <div class="col-4">
+                <button type="button" class="btn btn-primary btn-lg border border-dark mt-4" style="width:200px"
+                    id="btnDelete" (click)="deleteHoliday()">Delete holiday</button>
+            </div>
+        </div>
+    </form>
+
+
+    <div class="tbodyDiv ml-2 mr-auto mb-3 mt-5">
+        <table class="table table-dark table-striped text-center table-hover" id="tblholidays">
+            <thead class="sticky-top">
+                <tr>
+                    <th scope="col" hidden></th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Start Date</th>
+                    <th scope="col">End Date</th>
+                </tr>
+            </thead>
+            <tbody id="tblholidayBody">
+                <tr *ngFor="let holiday of this.holidays"
+                    (click)="getHoliday(holiday.holidayId, holiday.holidayName, holiday.holidayStart!, holiday.holidayEnd!)">
+
+                    <td hidden>{{holiday.holidayId}}</td>
+                    <td>{{holiday.holidayName}}</td>
+                    <td>{{holiday.holidayStart}}</td>
+                    <td>{{holiday.holidayEnd}}</td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+</div>

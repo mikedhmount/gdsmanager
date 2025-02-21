@@ -1,0 +1,175 @@
+<div id="mainDiv">
+    <form class="" autocomplete="off">
+        <h1 class="ms-6">Members</h1>
+
+        <div class="row g-5 justify-content-center form-floating">
+            <label hidden name="cardId">{{currentMember.memberId}}</label>
+        </div>
+        <div class="row g-5 mt-3 justify-content-center form-floating">
+            <div class="col-4">
+                <label for="memberUsername" class="form-label required">Member Username</label>
+                <input type="text" class="form-control" id="memberUsername" name="memberUsername"
+                    [(ngModel)]="currentMember.memberUsername">
+            </div>
+            <div class="col-2 form-check-inline justify-content-center text align-items-center pt-4">
+                <label for="memberEnable" class="form-check-label form-check-inline">Enabled</label>
+                <input class="form-check-input " type="checkbox" id="memberEnable" name="memberEnable"
+                    [(ngModel)]="enableIsChecked">
+            </div>
+        </div>
+        <div class="row g-5 mt1 justify-content-center form-floating">
+            <div class="col-4">
+                <label for="startDate" class="form-label">Start date</label>
+                <input type="date" class="form-control" id="startDate" name="startDate"
+                    [(ngModel)]="currentMember.memberStartdate">
+            </div>
+            <div class="col-4">
+                <label for="endDate" class="form-label">End date</label>
+                <input type="date" class="form-control" id="endDate" name="endDate"
+                    [(ngModel)]="currentMember.memberEnddate">
+            </div>
+        </div>
+        <div class="row g-5 mt1 justify-content-center form-floating">
+            <div class="col-4">
+                <label for="memberEmail" class="form-label">Email</label>
+                <input type="email" class="form-control" id="memberEmail" name="memberEmail"
+                    [(ngModel)]="currentMember.memberEmail">
+            </div>
+            <div class="col-2">
+                <label for="memberPin" class="form-label">Virtual #</label>
+                <input type="text" class="form-control" id="memberVirtualnumber" name="memberVirtualnumber"
+                    [(ngModel)]="currentMember.memberVirtualnumber"
+                    (change)="checkNumber(currentMember.memberVirtualnumber, 'Virtual Number')">
+            </div>
+            <div class="col-2">
+                <label for="memberGender" class="form-label">Gender</label>
+                <select class="form-control" name="selectedGender" [(ngModel)]="selectedGender">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <!-- <option *ngFor="let value of genderEnum" [value]="value">{{value}}</option> -->
+                </select>
+            </div>
+        </div>
+        <div class="row g-5 mt1 justify-content-center form-floating">
+            <div class="col-4" *ngIf="currentMember.cardId == 0">
+                <label for="memberCard" class="form-label required">Card</label>
+                <select name="selectedCard" class="form-control" [(ngModel)]="selectedCard">
+                    <option *ngFor="let card of cards" [value]="card.cardId">{{card.cardNumber}}</option>
+                </select>
+            </div>
+            <div class="col-4" *ngIf="currentMember.cardId != 0">
+                <label for="memberCardNo" class="form-label required">Card</label>
+                <input type="text" class="form-control" id="memberCardNo" name="memberCardNo"
+                    [(ngModel)]="currentMember.cardNumber" readonly>
+            </div>
+            <div class="col-2">
+                <label for="memberPin" class="form-label">Pin</label>
+                <input type="number" class="form-control" id="memberPin" name="memberPin"
+                    [(ngModel)]="currentMember.memberPin">
+            </div>
+            <div class="col-4">
+                <label for="memberGroup" class="form-label">Group</label>
+                <select name="selectedGroup" class="form-control" [(ngModel)]="selectedGroup">
+                    <option *ngFor="let group of groups" [value]="group.groupId">{{group.groupName}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="row g-5 mt1 justify-content-center form-floating">
+            <div class="col-3">
+                <label for="memberSipnumber" class="form-label">SIP number</label>
+                <input type="text" class="form-control" id="memberSipnumber" name="memberSipnumber"
+                    [(ngModel)]="currentMember.memberSipnumber">
+
+            </div>
+            <div class="col-3">
+                <label for="memberCalloutaccount" class="form-label">Callout Account</label>
+                <select name="memberCalloutaccount" class="form-control" [(ngModel)]="selectedAccount">
+                    <option value="Auto">Auto</option>
+                    <option value="Account1">Account1</option>
+                    <option value="Account2">Account2</option>
+                    <option value="Account3">Account3</option>
+                    <option value="Account4">Account4</option>
+                </select>
+            </div>
+            <div class="col-3">
+                <label for="memberCell" class="form-label">Cell number</label>
+                <input type="text" class="form-control" id="memberCell" name="memberCell"
+                    [(ngModel)]="currentMember.memberCell">
+            </div>
+        </div>
+
+
+        <div class="row g-5 mt1 justify-content-center">
+            <div class="col-8 lb-lg">
+                <label>{{errorLabel}}</label>
+            </div>
+        </div>
+
+        <div class="row form-floating mb-3 mt-5 mx-auto" style="width:60%">
+            <div class="col-4">
+                <button type="button" class="btn btn-primary btn-lg border border-dark mt-4" style="width:200px"
+                    id="btnSavemember" (click)="saveMember()">Save
+                    member</button>
+            </div>
+            <div class="col-4">
+                <button type="button" class="btn btn-primary btn-lg border border-dark mt-4" style="width:200px"
+                    id="btnCancel" (click)="cancelMember()">Cancel</button>
+            </div>
+            <div class="col-4">
+                <button type="button" class="btn btn-primary btn-lg border border-dark mt-4" style="width:200px"
+                    id="btnDelete" (click)="deleteMember()">Delete Member</button>
+            </div>
+        </div>
+    </form>
+
+
+    <div class="tbodyDiv ml-2 mr-auto mb-3 mt-5">
+        <table class="table table-dark table-striped text-center table-hover" id="tblUsers">
+            <thead class="sticky-top">
+                <tr>
+                    <th scope="col" hidden></th>
+                    <th scope="col">Member Username</th>
+                    <th scope="col" hidden></th>
+                    <th scope="col" hidden></th>
+                    <th scope="col">CarID</th>
+                    <th scope="col">Card Number</th>
+                    <th scope="col">Start date</th>
+                    <th scope="col">End date</th>
+                    <th scope="col" hidden></th>
+                    <th scope="col" hidden></th>
+                    <th scope="col" hidden></th>
+                    <th scope="col" hidden></th>
+                    <th scope="col" hidden></th>
+                    <th scope="col">Group Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Enabled</th>
+
+                </tr>
+            </thead>
+            <tbody id="tblUserBody">
+                <tr *ngFor="let member of this.members" (click)="getMember(member.memberId, member.memberUsername, member.memberPin!, member.memberGender, member.cardId,
+                    member.memberStartdate, member.memberEnddate, member.memberVirtualnumber, member.memberSipnumber, member.memberCalloutaccount, member.memberCell,
+                    member.memberEmail, member.groupId, member.memberEnable, member.cardNumber!, member.groupName!)">
+
+                    <td hidden>{{member.memberId}}</td>
+                    <td>{{member.memberUsername}}</td>
+                    <td hidden>{{member.memberPin}}</td>
+                    <td hidden>{{member.memberGender}}</td>
+                    <td>{{member.cardId}}</td>
+                    <td>{{member.cardNumber}}</td>
+                    <td>{{member.memberStartdate}}</td>
+                    <td>{{member.memberEnddate}}</td>
+                    <td hidden>{{member.memberVirtualnumber}}</td>
+                    <td hidden>{{member.memberSipnumber}}</td>
+                    <td hidden>{{member.memberCalloutaccount}}</td>
+                    <td hidden>{{member.memberCell}}</td>
+                    <td hidden>{{member.groupId}}</td>
+                    <td>{{member.groupName}}</td>
+                    <td>{{member.memberEmail}}</td>
+                    <td>{{member.memberEnable}}</td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+</div>

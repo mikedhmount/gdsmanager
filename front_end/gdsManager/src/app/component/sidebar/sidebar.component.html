@@ -1,0 +1,38 @@
+<div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+        <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                <span class="fs-5 d-none d-sm-inline"></span>
+        </a>
+        <nav class="sidebar py-2 mb-4 bg-dark">
+                <ul class="nav flex-column" id="nav_accordion">
+                        <li class="nav-item"><a class="nav-link text-white fs-5 align-items-center"
+                                        routerLinkActive="active" [routerLink]="['readers']">Readers</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link text-white fs-5 align-items-center"
+                                        routerLinkActive="active" [routerLink]="['groups']">Groups</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link text-white fs-5 align-items-center"
+                                        routerLinkActive="active" [routerLink]="['schedules']">Schedules</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link text-white fs-5 align-items-center"
+                                        routerLinkActive="active" [routerLink]="['holidays']">Holidays</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link text-white fs-5 align-items-center"
+                                        routerLinkActive="active" [routerLink]="['members']">Members</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link text-white fs-5 align-items-center"
+                                        routerLinkActive="active" [routerLink]="['cards']">Cards</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link text-white fs-5 align-items-center"
+                                        routerLinkActive="active" [routerLink]="['users']">User</a>
+                        </li>
+
+                        <li class="nav-item">
+                                <a class="nav-link text-white fs-5 align-items-center" id="logout" href="#"
+                                        (click)="logout()"> Logout
+                                </a>
+                        </li>
+                </ul>
+        </nav>
+
+
+</div>

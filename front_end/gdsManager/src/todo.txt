@@ -1,0 +1,9 @@
+If group is deleted, members with that groupId need to be updated
+
+Schedules - Holidays need to pick the holiday associated with it
+
+Members - need to pick the readers the member is assigned to
+
+Holidays - need to be able to add more than 1 timeframe
+
+Logging - back end - Need to log each transction
