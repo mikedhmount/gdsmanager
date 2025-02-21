@@ -1,0 +1,18 @@
+#readerTable{
+    width: 90%;
+}
+#mainDiv{
+    max-width: 80%;
+}
+h1{
+    text-align: center;
+}
+.control-label, .form-label{
+    justify-content: start;
+    align-content: start;
+    font-size: large;
+}
+.lb-lg{
+    font-size: large;
+    text-align: center;
+}

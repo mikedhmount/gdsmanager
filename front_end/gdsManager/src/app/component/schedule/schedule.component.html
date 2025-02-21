@@ -1,0 +1,287 @@
+<div id="mainDiv">
+    <form class="" autocomplete="off">
+        <h1 class="ms-6">Schedules</h1>
+
+        <div class="row g-5 justify-content-center form-floating">
+            <label hidden name="readerId">{{currentSchedule.scheduleId}}</label>
+        </div>
+        <div class="row g-5 mt-3 justify-content-center form-floating">
+            <div class="col-6">
+                <label for="scheduleName" class="form-label"> Schedule Name</label>
+                <input type="text" class="form-control" id="scheduleName" name="scheduleName" placeholder="Ex. Admin"
+                    [(ngModel)]="currentSchedule.scheduleName">
+            </div>
+        </div>
+        <div class="row mt-1 justify-content-center form-floating">
+            <div class="col-6">
+                <label for="holidaySelect" class="form-label">Holidays included</label>
+                <select name="holidaySelect" class="form-control" [(ngModel)]="selectHoliday">
+                    <option value="1">Enabled</option>
+                    <option value="0">Disabled</option>
+                </select>
+            </div>
+        </div>
+        <div class="row g-5 mt-1 justify-content-center">
+            <div class="col-8 lb-lg">
+                <label>{{errorLabel}}</label>
+            </div>
+        </div>
+
+        <div class="row mt-4 justify-content-center form-floating">
+            <div class="col-1">
+                <h2 class="lb-lg">MultiDay</h2>
+            </div>
+            <div class="col-2">
+                <label for="multiStart" class="form-label">Start</label>
+                <ngb-timepicker name="multiStart" [(ngModel)]="multiStartTime"></ngb-timepicker>
+            </div>
+            <div class="col-2">
+                <label for="multiEnd" class="form-label">End</label>
+                <ngb-timepicker name="multiEnd" [(ngModel)]="multiStopTime"></ngb-timepicker>
+            </div>
+            <div class="col-6">
+                <div class="row lb-lg">
+                    <label for="copyToGroup">Copy to</label>
+                </div>
+                <div class="row mt-4 ">
+                    <div class="col-2">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="inlineCheckbox1"
+                                value="option1" [(ngModel)]="monChecked">
+                            <label class="form-check-label" for="inlineCheckbox1">Mon</label>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="inlineCheckbox2"
+                                value="option2" [(ngModel)]="tuesChecked">
+                            <label class="form-check-label" for="inlineCheckbox2">Tues</label>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name="inlineCheckbox3"
+                                value="option3" [(ngModel)]="wedChecked">
+                            <label class="form-check-label" for="inlineCheckbox3">Wed</label>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox4" name="inlineCheckbox4"
+                                value="option4" [(ngModel)]="thursChecked">
+                            <label class="form-check-label" for="inlineCheckbox4">Thur</label>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox5" name="inlineCheckbox5"
+                                value="option5" [(ngModel)]="friChecked">
+                            <label class="form-check-label" for="inlineCheckbox5">Fri</label>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox6" name="inlineCheckbox6"
+                                value="option6" [(ngModel)]="satChecked">
+                            <label class="form-check-label" for="inlineCheckbox6">Sat</label>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox7" name="inlineCheckbox7"
+                                value="option7" [(ngModel)]="sunChecked">
+                            <label class="form-check-label" for="inlineCheckbox7">Sun</label>
+                        </div>
+                    </div>
+                    <!-- <div class="col-2">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                            <label class="form-check-label" for="inlineCheckbox1">Holidays</label>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="row mt-1 justify-content-center form-floating">
+                    <div class="col-4">
+                        <button type="button" class="btn btn-primary btn-lg border border-dark mt-4" style="width:200px"
+                            id="btnSaveReader" (click)="saveCopySchedule()">Save
+                            Schedule</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        <div class="row g-2 mt-1 justify-content-center form-floating">
+            <div class="col-2">
+                <h2 class="lb-lg">Monday</h2>
+            </div>
+            <div class="col-2">
+                <label for="mondayStart" class="form-label">Start</label>
+                <ngb-timepicker name="mondayStart" [(ngModel)]="mondayStartTime"></ngb-timepicker>
+            </div>
+            <div class="col-2">
+                <label for="mondayEnd" class="form-label">End</label>
+                <ngb-timepicker name="mondayEnd" [(ngModel)]="mondayStopTime"></ngb-timepicker>
+            </div>
+        </div>
+        <hr>
+        <div class="row g-2 mt-1 justify-content-center form-floating">
+            <div class="col-2">
+                <h2 class="lb-lg">Tuesday</h2>
+            </div>
+            <div class="col-2">
+                <label for="tuesdayStart" class="form-label">Start</label>
+                <ngb-timepicker name="tuesdayStart" [(ngModel)]="tuesdayStartTime"></ngb-timepicker>
+            </div>
+            <div class="col-2">
+                <label for="tuesdayEnd" class="form-label">End</label>
+                <ngb-timepicker name="tuesdayEnd" [(ngModel)]="tuesdayStopTime"></ngb-timepicker>
+            </div>
+        </div>
+        <hr>
+        <div class="row g-2 mt-1 justify-content-center form-floating">
+            <div class="col-2">
+                <h2 class="lb-lg">Wednesday</h2>
+            </div>
+            <div class="col-2">
+                <label for="wednesdayStart" class="form-label">Start</label>
+                <ngb-timepicker name="wednesdayStart" [(ngModel)]="wednesdayStartTime"></ngb-timepicker>
+            </div>
+            <div class="col-2">
+                <label for="wednesdayEnd" class="form-label">End</label>
+                <ngb-timepicker name="wednesdayEnd" [(ngModel)]="wednesdayStopTime"></ngb-timepicker>
+            </div>
+        </div>
+        <hr>
+        <div class="row g-2 mt-1 justify-content-center form-floating">
+            <div class="col-2">
+                <h2 class="lb-lg">Thursday</h2>
+            </div>
+            <div class="col-2">
+                <label for="thursdayStart" class="form-label">Start</label>
+                <ngb-timepicker name="thursdayStart" [(ngModel)]="thursdayStartTime"></ngb-timepicker>
+            </div>
+            <div class="col-2">
+                <label for="thursdayEnd" class="form-label">End</label>
+                <ngb-timepicker name="thursdayEnd" [(ngModel)]="thursdayStopTime"></ngb-timepicker>
+            </div>
+        </div>
+        <hr>
+        <div class="row g-2 mt-1 justify-content-center form-floating">
+            <div class="col-2">
+                <h2 class="lb-lg">Friday</h2>
+            </div>
+            <div class="col-2">
+                <label for="fridayStart" class="form-label">Start</label>
+                <ngb-timepicker name="fridayStart" [(ngModel)]="fridayStartTime"></ngb-timepicker>
+            </div>
+            <div class="col-2">
+                <label for="fridayEnd" class="form-label">End</label>
+                <ngb-timepicker name="fridayEnd" [(ngModel)]="fridayStopTime"></ngb-timepicker>
+            </div>
+        </div>
+        <hr>
+        <div class="row g-2 mt-1 justify-content-center form-floating">
+            <div class="col-2">
+                <h2 class="lb-lg">Saturday</h2>
+            </div>
+            <div class="col-2">
+                <label for="saturdayStart" class="form-label">Start</label>
+                <ngb-timepicker name="saturdayStart" [(ngModel)]="saturdayStartTime"></ngb-timepicker>
+            </div>
+            <div class="col-2">
+                <label for="saturdayEnd" class="form-label">End</label>
+                <ngb-timepicker name="saturdayEnd" [(ngModel)]="saturdayStopTime"></ngb-timepicker>
+            </div>
+        </div>
+        <hr>
+        <div class="row g-2 mt-1 justify-content-center form-floating">
+            <div class="col-2">
+                <h2 class="lb-lg">Sunday</h2>
+            </div>
+            <div class="col-2">
+                <label for="sundayStart" class="form-label">Start</label>
+                <ngb-timepicker name="sundayStart" [(ngModel)]="sundayStartTime"></ngb-timepicker>
+            </div>
+            <div class="col-2">
+                <label for="sundayEnd" class="form-label">End</label>
+                <ngb-timepicker name="sundayEnd" [(ngModel)]="sundayStopTime"></ngb-timepicker>
+            </div>
+        </div>
+        <div class="row g-5 mt-1 justify-content-center">
+            <div class="col-8 lb-lg">
+                <label>{{errorLabel}}</label>
+            </div>
+        </div>
+
+        <div class="row form-floating mb-3 mt-5 mx-auto" style="width:60%">
+            <div class="col-4">
+                <button type="button" class="btn btn-primary btn-lg border border-dark mt-4" style="width:200px"
+                    id="btnSaveReader" (click)="saveSchedule()">Save
+                    Schedule</button>
+            </div>
+            <div class="col-4">
+                <button type="button" class="btn btn-primary btn-lg border border-dark mt-4" style="width:200px"
+                    id="btnCancel" (click)="cancelSchedule()">Cancel</button>
+            </div>
+            <div class="col-4">
+                <button type="button" class="btn btn-primary btn-lg border border-dark mt-4" style="width:200px"
+                    id="btnDelete" (click)="deleteSchedule()">Delete Schedule</button>
+            </div>
+        </div>
+    </form>
+
+
+    <div class="tbodyDiv ml-2 mr-auto mb-3 mt-5">
+        <table class="table table-dark table-striped text-center table-hover" id="tblschedules">
+            <thead class="sticky-top">
+                <tr>
+                    <th scope="col" hidden></th>
+                    <th scope="col">Name</th>
+                    <th scope="col" hidden></th>
+                    <th scope="col" hidden></th>
+                    <th scope="col" hidden></th>
+                    <th scope="col" hidden></th>
+                    <th scope="col" hidden></th>
+                    <th scope="col" hidden></th>
+                    <th scope="col" hidden></th>
+                    <th scope="col" hidden></th>
+                    <th scope="col" hidden></th>
+                    <th scope="col" hidden></th>
+                    <th scope="col" hidden></th>
+                    <th scope="col" hidden></th>
+                    <th scope="col" hidden></th>
+                    <th scope="col" hidden></th>
+                    <th scope="col" hidden></th>
+                </tr>
+            </thead>
+            <tbody id="tblScheduleBody">
+                <tr *ngFor="let schedule of this.schedules"
+                    (click)="getSchedule(schedule.scheduleId, schedule.scheduleName, schedule.mondayStart!,
+                 schedule.mondayEnd!, schedule.tuesdayStart!, schedule.tuesdayEnd!, schedule.wednesdayStart!, schedule.wednesdayEnd!, schedule.thursdayStart!, schedule.thursdayEnd!,
+                 schedule.fridayStart!, schedule.fridayEnd!, schedule.saturdayStart!, schedule.saturdayEnd!, schedule.sundayStart!, schedule.sundayEnd!, schedule.holidays!)">
+                    <!-- </tr>schedule.scheduleId, schedule.scheduleName, schedule.schedId)"> -->
+
+                    <td hidden>{{schedule.scheduleId}}</td>
+                    <td>{{schedule.scheduleName}}</td>
+                    <td hidden>{{schedule.mondayStart}}</td>
+                    <td hidden>{{schedule.mondayEnd}}</td>
+                    <td hidden>{{schedule.tuesdayStart}}</td>
+                    <td hidden>{{schedule.tuesdayEnd}}</td>
+                    <td hidden>{{schedule.wednesdayStart}}</td>
+                    <td hidden>{{schedule.wednesdayEnd}}</td>
+                    <td hidden>{{schedule.thursdayStart}}</td>
+                    <td hidden>{{schedule.thursdayEnd}}</td>
+                    <td hidden>{{schedule.fridayStart}}</td>
+                    <td hidden>{{schedule.fridayEnd}}</td>
+                    <td hidden>{{schedule.saturdayStart}}</td>
+                    <td hidden>{{schedule.saturdayEnd}}</td>
+                    <td hidden>{{schedule.sundayStart}}</td>
+                    <td hidden>{{schedule.sundayEnd}}</td>
+                    <td hidden>{{schedule.holidays}}</td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+</div>

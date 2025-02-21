@@ -1,0 +1,68 @@
+<div id="mainDiv">
+    <form class="" autocomplete="off">
+        <h1 class="ms-6">Groups</h1>
+
+        <div class="row g-5 justify-content-center form-floating">
+            <label hidden name="readerId">{{currentGroup.groupId}}</label>
+        </div>
+        <div class="row g-5 mt-3 justify-content-center form-floating">
+            <div class="col-6">
+                <label for="groupName" class="form-label"> Group Name</label>
+                <input type="text" class="form-control" id="groupName" name="groupName" placeholder="Ex. Admin"
+                    [(ngModel)]="currentGroup.groupName">
+            </div>
+        </div>
+        <div class="row g-5 mt-3 justify-content-center form-floating">
+            <div class="col-6">
+                <label for="schedule" class="form-label">Schedules</label>
+                <select name="schedule" class="form-control" [(ngModel)]="selectedSchedule">
+                    <option *ngFor="let schedule of schedules" [value]="schedule.scheduleId">{{schedule.scheduleName}}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="row g-5 mt-1 justify-content-center">
+            <div class="col-8 lb-lg">
+                <label>{{errorLabel}}</label>
+            </div>
+        </div>
+
+        <div class="row form-floating mb-3 mt-5 mx-auto" style="width:60%">
+            <div class="col-4">
+                <button type="button" class="btn btn-primary btn-lg border border-dark mt-4" style="width:200px"
+                    id="btnSaveReader" (click)="saveGroup()">Save
+                    Group</button>
+            </div>
+            <div class="col-4">
+                <button type="button" class="btn btn-primary btn-lg border border-dark mt-4" style="width:200px"
+                    id="btnCancel" (click)="cancelGroup()">Cancel</button>
+            </div>
+            <div class="col-4">
+                <button type="button" class="btn btn-primary btn-lg border border-dark mt-4" style="width:200px"
+                    id="btnDelete" (click)="deleteGroup()">Delete Group</button>
+            </div>
+        </div>
+    </form>
+
+
+    <div class="tbodyDiv ml-2 mr-auto mb-3 mt-5">
+        <table class="table table-dark table-striped text-center table-hover" id="tblGroups">
+            <thead class="sticky-top">
+                <tr>
+                    <th scope="col" hidden></th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Schedule</th>
+                </tr>
+            </thead>
+            <tbody id="tblGroupBody">
+                <tr *ngFor="let group of this.groups" (click)="getGroup(group.groupId, group.groupName, group.schedId)">
+
+                    <td hidden>{{group.groupId}}</td>
+                    <td>{{group.groupName}}</td>
+                    <td>{{group.schedName}}</td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+</div>

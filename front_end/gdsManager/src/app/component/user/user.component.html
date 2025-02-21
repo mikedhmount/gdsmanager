@@ -1,0 +1,43 @@
+<div id="mainDiv">
+    <form class="" autocomplete="off">
+        <h1 class="ms-6">User</h1>
+
+        <div class="row g-5 justify-content-center form-floating">
+            <label hidden name="userId">{{currentUser.userId}}</label>
+        </div>
+        <div class="row g-5 mt-3 justify-content-center form-floating">
+            <div class="col-4">
+                <label for="userName" class="form-label">User Name</label>
+                <input type="text" class="form-control" id="userName" name="userName"
+                    [(ngModel)]="currentUser.userName">
+            </div>
+        </div>
+        <div class="row g-5 mt-1 justify-content-center form-floating">
+            <div class="col-4">
+                <label for="userPassword" class="form-label">User Password</label>
+                <input type="password" class="form-control" id="userPassword" name="userPassword"
+                    [(ngModel)]="password">
+            </div>
+        </div>
+        <div class="row g-5 mt-1 justify-content-center form-floating">
+            <div class="col-4">
+                <label for="groupEmail" class="form-label">Email</label>
+                <input type="email" class="form-control" id="userEmail" name="userEmail"
+                    [(ngModel)]="currentUser.userEmail">
+            </div>
+        </div>
+        <div class="row g-5 mt-1 justify-content-center">
+            <div class="col-8 lb-lg">
+                <label>{{errorLabel}}</label>
+            </div>
+        </div>
+
+        <div class="row form-floating mb-3 mt-3 mx-auto justify-content-center form-floating">
+            <div class="col-2">
+                <button type="button" class="btn btn-primary btn-lg border border-dark mt-4" style="width:200px"
+                    id="btnSaveReader" (click)="saveUser()">Save
+                    User</button>
+            </div>
+        </div>
+    </form>
+</div>
